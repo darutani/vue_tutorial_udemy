@@ -12,7 +12,8 @@
         <button v-on:click="clear">Clear</button>
         <div class="payment">
             <label>{{ Item1.name }}</label>
-            <label>{{ Item1.price }} yen</label>
+            <label>{{ priceLabel }}</label>
+            <!-- <label>{{ Item1.price }} yen</label> -->
             <a v-bind:href="url1">bought at...</a>
             <button v-on:click="buy(Item1.name)">BUY</button>
         </div>
@@ -26,7 +27,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive } from 'vue'
+import { ref, reactive, computed } from 'vue'
 
 const Item1 = reactive({
     name: '',
@@ -81,6 +82,16 @@ const clear = () => {
     Item2.name = '';
     Item2.price = 0;
 }
+
+const budget = 50000;
+
+const priceLabel = computed(() => {
+    if (Item1.price > budget) {
+        return 'too expensive'
+    } else {
+        return Item1.price + 'yen'
+    }
+})
 </script>
 
 <style scoped>
