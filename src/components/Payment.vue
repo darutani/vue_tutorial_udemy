@@ -86,7 +86,9 @@ const clear = () => {
 const budget = 50000;
 
 const priceLabel = computed(() => {
-    if (Item1.price > budget) {
+    if (Item1.price > budget * 2) {
+        return 'toooooo expensive'
+    } else if (Item1.price > budget) {
         return 'too expensive'
     } else {
         return Item1.price + 'yen'
