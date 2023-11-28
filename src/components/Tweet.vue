@@ -49,9 +49,13 @@ const deleteTweet = (id: number) => {
   align-items: center;
   background-color: aliceblue;
   padding: 24px 0;
-  width: 60%;
+  width: 40%;
   margin-bottom: 12px;
   border-radius: 4px;
+}
+
+ul {
+  padding: 0;
 }
 
 .tweet-list {
