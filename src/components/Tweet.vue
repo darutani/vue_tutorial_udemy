@@ -25,7 +25,7 @@ const deleteTweet = (id: number) => {
     <button class="save-button" @click="postTweet()">Post</button>
   </div>
   <div class="tweet-container">
-    <p v-if="tweets.length <= 0">No tweets have been added</ちゃp>
+    <p v-if="tweets.length <= 0">No tweets have been added</p>
     <!-- <p v-show="tweets.length <= 0">No tweets have been added</p> -->
     <ul>
       <li v-for="tweet in tweets" :key="tweet.id" class="tweet-list">
