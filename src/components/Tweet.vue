@@ -1,15 +1,14 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import TweetPostForm from './TweetPostForm.vue';
+import TweetList from './TweetList.vue';
 
 const tweets = ref([{id: 0, description: 'Hello, World!'}, {id: 1, description: 'This is second tweet!'}])
 const inputtingDescription = ref<string>('')
 
-const postTweet = () => {
-  const tweet = { id: Math.random(), description: inputtingDescription.value }
+const postTweet = (description: string) => {
+  const tweet = { id: Math.random(), description }
   tweets.value.push(tweet);
-  inputtingDescription.value = '';
-  console.log('post:', tweets.value)
 }
 
 const deleteTweet = (id: number) => {
@@ -21,14 +20,14 @@ const deleteTweet = (id: number) => {
   <div class="container">
     <h1>Tweeter</h1>
   </div>
-  <TweetPostForm />
+  <TweetPostForm @post-tweet="postTweet" />
     <!-- <input v-model="inputtingDescription" />
     <button class="save-button" @click="postTweet()">Post</button> -->
   <div class="tweet-container">
     <p v-if="tweets.length <= 0">No tweets have been added</p>
     <!-- <p v-show="tweets.length <= 0">No tweets have been added</p> -->
     <ul>
-      <TweetList :tweets="tweets" />
+      <TweetList :tweets="tweets" @tweet-delete="deleteTweet" />
       <!-- <li v-for="tweet in tweets" :key="tweet.id" class="tweet-list">
         <span>{{ tweet.description }}</span>
         <button class="delete-button" @click="deleteTweet(tweet.id)">DELETE</button>
