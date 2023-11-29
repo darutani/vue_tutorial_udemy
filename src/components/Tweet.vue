@@ -27,7 +27,7 @@ const deleteTweet = (id: number) => {
     <p v-if="tweets.length <= 0">No tweets have been added</p>
     <!-- <p v-show="tweets.length <= 0">No tweets have been added</p> -->
     <ul>
-      <TweetList :tweets="tweets" @tweet-delete="deleteTweet" />
+      <TweetList :tweets="tweets" :delete-tweet="deleteTweet" />
       <!-- <li v-for="tweet in tweets" :key="tweet.id" class="tweet-list">
         <span>{{ tweet.description }}</span>
         <button class="delete-button" @click="deleteTweet(tweet.id)">DELETE</button>
